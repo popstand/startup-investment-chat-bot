@@ -1,6 +1,6 @@
 {
     "appSecret": "06e5d105cc213de4f7ad12e49f63e439",
-    "pageAccessToken": "EAAOC99MoH0YBABjdZAsEccYZCwTfubwwxygOv17UTJCYtzZBAV8l1E9MZBaLZBmHLyVQk7jzAQm7tVGp2TZAKLaWoNGKISSVWdZAON04Luazr8i7FzLCAWHVto12VfPH2PCWMVNJ2OKWecFYTiiL7w6dKK2UHXVZCo1ZCqWtMO0Au7QZDZD",
+    "pageAccessToken": "EAAOC99MoH0YBAEA2zG625cAXnii1oEyqopHL22Tpdbq0GZCzLWLkH8gJfUEkjw3BufAh7p8WPZC9xbSBwTKWAPYDdZA4FWaZAxD1CUhe7ykEEbajwvCtbIX8sorzzZCJbWtO83F4ymgVxEZAC6TSEWteu0wG3FehJZCghoDYQvJHAZDZD",
     "validationToken": "startup_investment_chat_bot_verify_token",
     "serverURL": "https://startupinvestmentchatbot.herokuapp.com/"
 }
