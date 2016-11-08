@@ -129,7 +129,7 @@ app.post('/webhook', function (req, res) {
       currentUser = user;
     } else {
       console.log('didn\'t find user, creating one', user);
-      currentUser = new User({facebookid: })
+      //currentUser = new User({facebookid: })
     }
   });
 
