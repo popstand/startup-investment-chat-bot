@@ -18,6 +18,40 @@ const
   https = require('https'),
   request = require('request');
 
+  const mongoose = require('mongoose');
+  const db = mongoose.connection;
+
+  console.log('db', db);
+
+  db.on('error', console.error);
+  db.once('open', function() {
+    // Create your schemas and models here.
+    console.log('mongodb opened successfully, now creating models');
+
+    // user
+    var userSchema = new mongoose.Schema({
+      firstname: String,
+      lastname: String,
+      facebookid: Number,
+    });
+
+    var User = mongoose.model('User', userSchema)
+
+    console.log('userSchema',userSchema);
+    console.log('User', User);
+
+    // var investorsSchema = new mongoose.Schema({
+    //
+    // });
+    //
+    // var answersSchema = new mongoose.Schema({
+    //
+    // });
+
+  });
+
+mongoose.connect('mongodb://heroku_19s8xdfc:jurjqsrd0m7vsf4m00kr6tvmgf@ds147797.mlab.com:47797/heroku_19s8xdfc');
+
 var app = express();
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
@@ -83,11 +117,21 @@ app.get('/webhook', function(req, res) {
 app.post('/webhook', function (req, res) {
   var data = req.body;
 
+  console.log('data', data);
+
+  // check for the user or create the user
+  User.findOne({ 'facebookid': 123456 }, function (err, person) {
+    if (err) return handleError(err);
+    console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
+  })
+
   // Make sure this is a page subscription
   if (data.object == 'page') {
     // Iterate over each entry
     // There may be multiple if batched
     data.entry.forEach(function(pageEntry) {
+
+      console.log('pageEntry', pageEntry);
       var pageID = pageEntry.id;
       var timeOfEvent = pageEntry.time;
 
