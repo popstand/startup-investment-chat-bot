@@ -26,19 +26,14 @@ const
   db.on('error', console.error);
   db.once('open', function() {
     // Create your schemas and models here.
-    console.log('mongodb opened successfully, now creating models');
+    console.log('mongodb opened successfully');
 
-    // user
-    var userSchema = new mongoose.Schema({
-      firstname: String,
-      lastname: String,
-      facebookid: Number,
-    });
 
-    var User = mongoose.model('User', userSchema)
 
-    console.log('userSchema',userSchema);
-    console.log('User', User);
+    //var User = mongoose.model('User', userSchema)
+
+    //console.log('userSchema',userSchema);
+    //console.log('User', User);
 
     // var investorsSchema = new mongoose.Schema({
     //
@@ -119,12 +114,18 @@ app.post('/webhook', function (req, res) {
 
   console.log('data', data);
 
+  var User = require("./models/user").User;
+
   // check for the user or create the user
-  User.findOne({ 'facebookid': 123456 }, function (err, person) {
-    if (err) return handleError(err);
-    console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
+  User.findOne({ 'facebookid': 123456 }, function (err, user) {
+    if (err) {
+        return handleError(err);
+    }
+    //console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
+    console.log('user', user);
   })
 
+  console.log('checking... data.object == page');
   // Make sure this is a page subscription
   if (data.object == 'page') {
     // Iterate over each entry
