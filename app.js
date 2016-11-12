@@ -112,26 +112,7 @@ app.get('/webhook', function(req, res) {
 app.post('/webhook', function (req, res) {
   var data = req.body;
 
-  console.log('data', data);
-
-  var User = require("./models/user").User;
-  var currentUser;
-
-  // check for the user or create the user
-  User.findOne({ 'facebookid': 123456 }, function (err, user) {
-    if (err) {
-        return handleError(err);
-    }
-    //console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
-    console.log('user', user);
-    if(user) {
-      console.log('found user', user);
-      currentUser = user;
-    } else {
-      console.log('didn\'t find user, creating one', user);
-      //currentUser = new User({facebookid: })
-    }
-  });
+  //console.log('data', data);
 
   console.log('checking... data.object == page');
   // Make sure this is a page subscription
