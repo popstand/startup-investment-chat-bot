@@ -127,7 +127,7 @@ app.post('/webhook', function (req, res) {
 
       // Iterate over each messaging event
       pageEntry.messaging.forEach(function(messagingEvent) {
-        console.log('messagingEvent', messagingEvent);
+        //console.log('messagingEvent', messagingEvent);
         if (messagingEvent.optin) {
           receivedAuthentication(messagingEvent);
         } else if (messagingEvent.message) {
@@ -270,6 +270,25 @@ function receivedMessage(event) {
   var messageText = message.text;
   var messageAttachments = message.attachments;
   var quickReply = message.quick_reply;
+
+  var User = require("./models/user").User;
+  var currentUser;
+
+  // check for the user or create the user
+  // User.findOne({ 'facebookid': 123456 }, function (err, user) {
+  //   if (err) {
+  //       return handleError(err);
+  //   }
+  //   //console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
+  //   console.log('user', user);
+  //   if(user) {
+  //     console.log('found user', user);
+  //     currentUser = user;
+  //   } else {
+  //     console.log('didn\'t find user, creating one', user);
+  //     //currentUser = new User({facebookid: })
+  //   }
+  // });
 
   if (isEcho) {
     // Just logging message echoes to console
