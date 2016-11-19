@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var UserSchema = new mongoose.Schema({
   firstname: String,
   lastname: String,
-  facebookid: Number,
+  senderID: Number,
 });
 // var UserSchema = new mongoose.Schema({
 //   name: {
