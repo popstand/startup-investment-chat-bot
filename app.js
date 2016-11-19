@@ -288,6 +288,7 @@ function receivedMessage(event) {
     } else {
       console.log('didn\'t find user, creating one', user);
       currentUser = new User({senderID: senderID});
+      console.log("currentUser", currentUser);
       currentUser.save(function (err) {
         console.log("currentUser.save err", err);
         if (err) return handleError(err);
